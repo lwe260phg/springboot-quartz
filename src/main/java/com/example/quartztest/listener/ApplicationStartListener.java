@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 
 import com.example.quartztest.entity.ScheduleJob;
 import com.example.quartztest.jobManage.QuartzService;
+import com.example.quartztest.service.ScheduleJobService;
 import com.example.quartztest.task.MyJobAuto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +13,7 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.event.ContextRefreshedEvent;
 
+import java.util.List;
 import java.util.UUID;
 
 
@@ -27,11 +29,15 @@ public class ApplicationStartListener implements ApplicationListener<ContextRefr
     private static Logger log = LoggerFactory.getLogger(ApplicationStartListener.class);
     @Autowired
     private QuartzService quartzService;
-
+    @Autowired
+    ScheduleJobService scheduleJobService;
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
+        /*List<ScheduleJob> scheduleJobList = scheduleJobService.list();
+        scheduleJobList.forEach();*/
+        //可以自己mock，也可以从数据库中获取然后循环插入
         ScheduleJob job=new ScheduleJob();
-        job.setId(1);//这个自己定，提前落表就好，可以改从表格中获取
+        job.setId(1);//这个自己定，和数据库中定的一致就好
         job.setJobId(UUID.randomUUID().toString().replaceAll("-",""));
         job.setClassName(MyJobAuto.class.getName());//注意,这里的路径请改成你自己的
         job.setCronExpression("0/3 * * * * ?");
@@ -41,10 +47,14 @@ public class ApplicationStartListener implements ApplicationListener<ContextRefr
         job.setTriggerGroup("AutoJobTriggerGroup");
         job.setDescription("AutoJob-随项目启动");
         //可以将任务跟数据库挂钩,做个任务管理模块,获取需要自启动的任务,记录各个参数等
-        JSONObject jsonObject=new JSONObject();
-        jsonObject.put("testKey","测试即启动");
-        job.setData(jsonObject);
+        JSONObject jsonObject1=new JSONObject();
+        jsonObject1.put("testKey","AutoJob测试即启动");
+        job.setData(jsonObject1);
         quartzService.addJob(job);
+
+        /*if (第一次启动的时候，id不存在，直接生成){
+            scheduleJobService.save(job);
+        }*/
 
 
         //可以初始化多个，或者通过接口的add方法添加新的定时任务，要在task里面去新建job的实现

@@ -57,13 +57,13 @@ public class ScheduleJob implements Serializable {
     private JSONObject data;
 
     /**
-     * 是否有效
+     * 是否有效: 0否1是
      */
-    private Boolean pauseStatus;
+    private Integer pauseStatus;
     /**
-     * 是否取消
+     * 是否取消：0否1是
      */
-    private Boolean deleteStatus;
+    private Integer deleteStatus;
     /**
      * 创建时间
      */
@@ -157,30 +157,6 @@ public class ScheduleJob implements Serializable {
         this.description = description;
     }
 
-    public JSONObject getData() {
-        return data;
-    }
-
-    public void setData(JSONObject data) {
-        this.data = data;
-    }
-
-    public Boolean getPauseStatus() {
-        return pauseStatus;
-    }
-
-    public void setPauseStatus(Boolean pauseStatus) {
-        this.pauseStatus = pauseStatus;
-    }
-
-    public Boolean getDeleteStatus() {
-        return deleteStatus;
-    }
-
-    public void setDeleteStatus(Boolean deleteStatus) {
-        this.deleteStatus = deleteStatus;
-    }
-
     public Date getCreateTime() {
         return createTime;
     }
@@ -203,5 +179,30 @@ public class ScheduleJob implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+
+    public Integer getPauseStatus() {
+        return pauseStatus;
+    }
+
+    public void setPauseStatus(Integer pauseStatus) {
+        this.pauseStatus = pauseStatus;
+    }
+
+    public Integer getDeleteStatus() {
+        return deleteStatus;
+    }
+
+    public void setDeleteStatus(Integer deleteStatus) {
+        this.deleteStatus = deleteStatus;
+    }
+
+    public JSONObject getData() {
+        return data;
+    }
+
+    public void setData(JSONObject data) {
+        this.data = data;
     }
 }

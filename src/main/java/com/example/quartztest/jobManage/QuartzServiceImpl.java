@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 /**
  * @Author :
  * @CreateTime :
@@ -25,11 +27,10 @@ public class QuartzServiceImpl implements QuartzService {
     public Boolean addJob(ScheduleJob job) {
         try {
 
-            JSONObject data = job.getData();
-            log.info("当前任务携带的业务参数={}", data.toJSONString());
             JobDataMap jobDataMap = new JobDataMap();
-            jobDataMap.put("myValue", data);
-            String jobId = job.getJobId();
+            jobDataMap.put("myValue", job.getData());
+            String jobId = UUID.randomUUID().toString().replaceAll("-","");
+            job.setJobId(jobId);
             String jobName = job.getJobName();
             String jobUnique = jobId + jobName;
             JobDetail jobDetail = JobBuilder
