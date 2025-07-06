@@ -11,10 +11,11 @@ import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 import java.io.IOException;
 import java.util.Properties;
 
+
 /**
- * @Author : JCccc
- * @CreateTime : 2020/3/21
- * @Description : 调度工厂,线程池属性等等配置
+ * @Author :
+ * @CreateTime :
+ * @Description :调度工厂,线程池属性等等配置
  **/
 @Configuration
 public class QuartzConfig {

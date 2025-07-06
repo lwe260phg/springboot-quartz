@@ -2,7 +2,7 @@ package com.example.quartztest.listener;
 
 import com.alibaba.fastjson.JSONObject;
 
-import com.example.quartztest.entity.JobEntity;
+import com.example.quartztest.entity.ScheduleJob;
 import com.example.quartztest.jobManage.QuartzService;
 import com.example.quartztest.task.MyJobAuto;
 import org.slf4j.Logger;
@@ -15,12 +15,12 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import java.util.UUID;
 
 
-/**
- * @Author : JCccc
- * @CreateTime : 2020/3/21
- * @Description :
- **/
 
+/**
+ * @Author :
+ * @CreateTime :
+ * @Description :定时任务初始化
+ **/
 @Configuration
 public class ApplicationStartListener implements ApplicationListener<ContextRefreshedEvent> {
 
@@ -30,10 +30,9 @@ public class ApplicationStartListener implements ApplicationListener<ContextRefr
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
-        JobEntity job=new JobEntity();
-
+        ScheduleJob job=new ScheduleJob();
+        job.setId(1);//这个自己定，提前落表就好，可以改从表格中获取
         job.setJobId(UUID.randomUUID().toString().replaceAll("-",""));
-
         job.setClassName(MyJobAuto.class.getName());//注意,这里的路径请改成你自己的
         job.setCronExpression("0/3 * * * * ?");
         job.setJobName("AutoJob");
@@ -47,6 +46,8 @@ public class ApplicationStartListener implements ApplicationListener<ContextRefr
         job.setData(jsonObject);
         quartzService.addJob(job);
 
+
+        //可以初始化多个，或者通过接口的add方法添加新的定时任务，要在task里面去新建job的实现
         /*JobEntity job1=new JobEntity();
 
         job1.setJobId(UUID.randomUUID().toString().replaceAll("-",""));

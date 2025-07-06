@@ -1,7 +1,7 @@
 package com.example.quartztest.jobManage;
 
 import com.alibaba.fastjson.JSONObject;
-import com.example.quartztest.entity.JobEntity;
+import com.example.quartztest.entity.ScheduleJob;
 import org.quartz.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,11 +10,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 /**
- * @Author : JCccc
- * @CreateTime : 2020/3/21
- * @Description :
+ * @Author :
+ * @CreateTime :
+ * @Description :定时任务 Mapper 接口
  **/
-
 @Service
 public class QuartzServiceImpl implements QuartzService {
     private static Logger log = LoggerFactory.getLogger(QuartzServiceImpl.class);
@@ -23,7 +22,7 @@ public class QuartzServiceImpl implements QuartzService {
     private Scheduler scheduler;
 
     @Override
-    public Boolean addJob(JobEntity job) {
+    public Boolean addJob(ScheduleJob job) {
         try {
 
             JSONObject data = job.getData();
@@ -62,7 +61,7 @@ public class QuartzServiceImpl implements QuartzService {
     }
 
     @Override
-    public Boolean runJob(JobEntity job) {
+    public Boolean runJob(ScheduleJob job) {
         try {
             String jobId = job.getJobId();
             String jobName = job.getJobName();
@@ -78,7 +77,7 @@ public class QuartzServiceImpl implements QuartzService {
     }
 
     @Override
-    public Boolean updateJob(JobEntity job) {
+    public Boolean updateJob(ScheduleJob job) {
         try {
             String jobId = job.getJobId();
             String jobName = job.getJobName();
@@ -104,7 +103,7 @@ public class QuartzServiceImpl implements QuartzService {
     }
 
     @Override
-    public Boolean pauseJob(JobEntity job) {
+    public Boolean pauseJob(ScheduleJob job) {
         try {
             String jobId = job.getJobId();
             String jobName = job.getJobName();
@@ -120,7 +119,7 @@ public class QuartzServiceImpl implements QuartzService {
     }
 
     @Override
-    public Boolean resumeJob(JobEntity job) {
+    public Boolean resumeJob(ScheduleJob job) {
         try {
             String jobId = job.getJobId();
             String jobName = job.getJobName();
@@ -136,7 +135,7 @@ public class QuartzServiceImpl implements QuartzService {
     }
 
     @Override
-    public Boolean deleteJob(JobEntity job) {
+    public Boolean deleteJob(ScheduleJob job) {
         try {
             String jobId = job.getJobId();
             String jobName = job.getJobName();
@@ -151,7 +150,7 @@ public class QuartzServiceImpl implements QuartzService {
     }
 
     @Override
-    public JSONObject queryJob(JobEntity job) {
+    public JSONObject queryJob(ScheduleJob job) {
         TriggerKey triggerKey = new TriggerKey(job.getTriggerName(),
                 job.getTriggerGroup());
         try {

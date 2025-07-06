@@ -4,10 +4,10 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.quartztest.entity.ScheduleJobLog;
 
 /**
-* @author HZW
-* @description ScheduleJobLogService 接口
-* @date 2021-11-30
-*/
+ * @Author :
+ * @CreateTime :
+ * @Description :ScheduleJobLog接口
+ **/
 public interface ScheduleJobLogService extends IService<ScheduleJobLog> {
 
     /**

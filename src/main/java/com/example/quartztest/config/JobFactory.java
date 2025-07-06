@@ -7,11 +7,10 @@ import org.springframework.scheduling.quartz.AdaptableJobFactory;
 import org.springframework.stereotype.Component;
 
 /**
- * @Author maojianmguo
- * @Description TODO
- * @Date 2025/7/2 23:25
- */
-
+ * @Author :
+ * @CreateTime :
+ * @Description :
+ **/
 @Component
 public class JobFactory extends AdaptableJobFactory {
 

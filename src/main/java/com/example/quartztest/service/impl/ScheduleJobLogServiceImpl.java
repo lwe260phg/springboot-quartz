@@ -5,7 +5,6 @@ import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.example.quartztest.config.ScheduleConstants;
 import com.example.quartztest.dao.ScheduleJobLogDao;
 import com.example.quartztest.entity.ScheduleJobLog;
 import com.example.quartztest.service.ScheduleJobLogService;
@@ -14,11 +13,12 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.Date;
 
+
 /**
-* @author HZW
-* @description ScheduleJobLogServiceImpl 接口实现
-* @date 2021-11-30
-*/
+ * @Author :
+ * @CreateTime :
+ * @Description :ScheduleJobLogServiceImpl 接口实现
+ **/
 @Service
 public class ScheduleJobLogServiceImpl extends ServiceImpl<ScheduleJobLogDao, ScheduleJobLog> implements ScheduleJobLogService {
 
@@ -38,10 +38,10 @@ public class ScheduleJobLogServiceImpl extends ServiceImpl<ScheduleJobLogDao, Sc
 
     @Override
     public void test() {
-        System.out.printf("aaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         ScheduleJobLog jobLog = new ScheduleJobLog();
         try {
-            jobLog.setJobId(1);
+            jobLog.setId(1);
+            jobLog.setJobId("ttt");
             jobLog.setBeanName("MyJobAuto");
             jobLog.setCreateTime(new Date());
             jobLog.setMethodName("execute");

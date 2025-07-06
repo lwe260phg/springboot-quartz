@@ -1,6 +1,6 @@
 package com.example.quartztest.task; /**
- * @Author : JCccc
- * @CreateTime : 2020/3/21
+ * @Author :
+ * @CreateTime :
  * @Description :
  **/
 
@@ -16,11 +16,12 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 @Component("MyJobSecond")
-public class MyJobSecond {
+public class MyJobSecond implements Job{
 
     private static Logger log = LoggerFactory.getLogger(MyJobSecond.class);
 
-    public void myJobSecondtask(JobExecutionContext context) {
+    @Override
+    public void execute(JobExecutionContext context) {
         //定时任务处理的业务逻辑
         //...
         //...

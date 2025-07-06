@@ -3,29 +3,26 @@ package com.example.quartztest.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-
 import java.io.Serializable;
 import java.util.Date;
 
+
 /**
- * <p>
- * 定时任务日志
- * </p>
- *
- * @author HZW
- * @since 2021-11-30
- */
-@TableName("eb_schedule_job_log")
+ * @Author :
+ * @CreateTime :
+ * @Description :定时任务日志
+ **/
+@TableName("schedule_job_log")
 public class ScheduleJobLog implements Serializable {
-
     private static final long serialVersionUID=1L;
-
-   // @ApiModelProperty(value = "任务日志id")
-    @TableId(value = "log_id", type = IdType.AUTO)
-    private Integer logId;
+    /**
+     * 任务日志id,唯一id
+     */
+    @TableId(value = "id", type = IdType.AUTO)
+    private Integer id;
 
     //@ApiModelProperty(value = "任务id")
-    private Integer jobId;
+    private String jobId;
 
    // @ApiModelProperty(value = "spring bean名称")
     private String beanName;
@@ -36,7 +33,7 @@ public class ScheduleJobLog implements Serializable {
     //@ApiModelProperty(value = "参数")
     private String params;
 
-   // @ApiModelProperty(value = "任务状态    0：成功    1：失败")
+   // @ApiModelProperty(value = "执行状态    0：失败   1：成功")
     private Integer status;
 
     //@ApiModelProperty(value = "失败信息")
@@ -47,23 +44,6 @@ public class ScheduleJobLog implements Serializable {
 
     //@ApiModelProperty(value = "创建时间")
     private Date createTime;
-
-
-    public Integer getLogId() {
-        return logId;
-    }
-
-    public void setLogId(Integer logId) {
-        this.logId = logId;
-    }
-
-    public Integer getJobId() {
-        return jobId;
-    }
-
-    public void setJobId(Integer jobId) {
-        this.jobId = jobId;
-    }
 
     public String getBeanName() {
         return beanName;
@@ -119,5 +99,21 @@ public class ScheduleJobLog implements Serializable {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getJobId() {
+        return jobId;
+    }
+
+    public void setJobId(String jobId) {
+        this.jobId = jobId;
     }
 }

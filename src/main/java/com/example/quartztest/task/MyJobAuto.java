@@ -1,12 +1,11 @@
 package com.example.quartztest.task;
 
 /**
- * @Author : JCccc
- * @CreateTime : 2020/3/21
+ * @Author :
+ * @CreateTime :
  * @Description :
  **/
 import com.alibaba.fastjson.JSONObject;
-import com.example.quartztest.config.ScheduleConstants;
 import com.example.quartztest.entity.ScheduleJobLog;
 import com.example.quartztest.service.ScheduleJobLogService;
 import org.quartz.DisallowConcurrentExecution;
@@ -37,10 +36,11 @@ public class MyJobAuto implements Job {
         //...
 
         ScheduleJobLog jobLog = new ScheduleJobLog();
-        jobLog.setJobId(1);
+        jobLog.setId(1);
+        jobLog.setJobId("111");
         jobLog.setBeanName("MyJobAuto");
         jobLog.setCreateTime(new Date());
-        jobLog.setStatus(ScheduleConstants.NORMAL);
+        jobLog.setStatus(1);
         jobLog.setMethodName("execute");
         String name = context.getJobDetail().getKey().getName();
         log.info("******MyJobAuto任务[{}]正在执行******",name);
